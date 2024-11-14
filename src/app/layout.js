@@ -29,6 +29,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
 
   /*
+  client 컴포넌트에서 데이터 조회
   / topics에 있는 걸 배열에 담아서 출력하겠다
   const [topics, setTopics] = useState([]);
 
@@ -48,7 +49,8 @@ export default async function RootLayout({ children }) {
   */
 
   // await를 사용하려면 부모에 async가 있어야 함
-  const response = await fetch('http://localhost:9999/topics');
+  // 서버형 컴포넌트에서 데이터 조회
+  const response = await fetch(process.env.NEXT_PUBLIC_API_URL+'topics');
   const topics = await response.json(); // json -> object
 
 

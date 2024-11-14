@@ -2,9 +2,12 @@
 import { useRouter } from 'next/navigation'
 
 export default function Create() {
-  
   const router = useRouter();
   const onSubmit = (e)=>{
+    e.preventDefault();
+
+    const title = e.target.title.value;
+    const body = e.target.body.value;
     // fetch 함수 옵션 사용
     const options = {
       method:'POST',
@@ -19,7 +22,7 @@ export default function Create() {
       */
       body:JSON.stringify({title, body}) //object->json
     }
-    fetch('http://localhost:9999/topics', options)
+    fetch(process.env.NEXT_PUBLIC_API_URL+'topics', options)
       .then(res => res.json()) // 결과를 json에서 object-객체로 변환
       .then(result => {
         console.log(result);
