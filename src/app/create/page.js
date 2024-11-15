@@ -12,7 +12,8 @@ export default function Create() {
     const options = {
       method:'POST',
       headers:{ // post 방식으로 넘어가는 형식 지정
-        'Content-Type':'application/json'
+        'Content-Type':'application/json',
+        'Cache-Control': 'no-cache'
       },
       /*
       사용자가 입력한 제목, 내용을 stringify를 사용해서 object -> json으로 변경
